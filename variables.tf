@@ -13,10 +13,10 @@ variable "description" {
 variable "destinations" {
   type        = list(object({ server : string, namespace : string }))
   description = "A list of server and namespaces that this project may deploy to."
-  default = {
+  default = [{
     server    = "https://kubernetes.default.svc"
     namespace = "default"
-  }
+  }]
 }
 variable "cascade_delete" {
   type        = bool
@@ -26,7 +26,7 @@ variable "cascade_delete" {
 variable "source_repos" {
   type        = list(string)
   description = "A list of repositories this project may pull from"
-  default     = "*"
+  default     = ["*"]
 }
 variable "cluster_resource_whitelist" {
   type        = list(object({ kind : string, group : string }))
