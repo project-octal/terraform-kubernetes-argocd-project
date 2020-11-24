@@ -1,4 +1,4 @@
-variable "argocd_namespace" {
+variable "namespace" {
   type        = string
   description = "The name of the target ArgoCD Namespace"
 }

@@ -4,7 +4,7 @@ locals {
     kind       = "AppProject"
     metadata = {
       name      = var.name
-      namespace = var.argocd_namespace
+      namespace = var.namespace
     }
     finalizers = var.cascade_delete ? ["resources-finalizer.argocd.argoproj.io"] : []
     spec = {
