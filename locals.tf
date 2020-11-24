@@ -14,7 +14,17 @@ locals {
       clusterResourceWhitelist   = var.cluster_resource_whitelist
       namespaceResourceWhitelist = var.namespace_resource_whitelist
       namespaceResourceBlacklist = var.namespace_resource_blacklist
-      roles : [ for role in var.roles : { name: role["name"], description: role["description"], policies: role["policies"], groups: var.oidc_group_role_membership[role["name"]] } ]
+      roles : [
+        for permission in var.permissions : {
+          name : permission["name"],
+          description : permission["description"],
+          policies : [
+            for policy in permission["policies"] :
+            "p, proj:${var.name}:${permission["name"]}, ${policy["resource"]}, ${policy["action"]}, ${var.name}/${policy["object"]}, allow"
+          ],
+          groups : permission["oidc_groups"]
+        }
+      ]
     }
   }
 }

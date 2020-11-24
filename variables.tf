@@ -43,14 +43,17 @@ variable "namespace_resource_blacklist" {
   description = "A list of namespace-scoped resources the project is NOT allowed to access"
   default     = []
 }
-variable "roles" {
-  type        = list(object({ name : string, description : string, policies : list(string) }))
+variable "permissions" {
+  type = list(object({
+    name : string
+    description : string
+    policies : list(object({
+      resource : string
+      action : string
+      object : string
+    }))
+    oidc_groups : list(string)
+  }))
   description = "A list of roles and their policies to define within ArgoCD"
   default     = []
-}
-variable "oidc_group_role_membership" {
-  type        = map(list(string))#list(object({ group_name : string, roles : list(string) }))
-  description = "A map of `roles.*.name` to a list of member OIDC groups"
-  #description = "A list of objects that contain a `group_name` and the roles it will be a member of."
-  default     = {}
 }
