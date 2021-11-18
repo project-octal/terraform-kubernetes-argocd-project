@@ -15,7 +15,8 @@ The only hard requirement is a Kubernetes cluster with a functioning ArgoCD depl
 ### TODO:
 - Update the Terraform version to 1.0+
 - Deprecate the `k8s` provider in favor of the `kubernetes_manifest` resource in the `kubernetes` provider.
- 
+
+### Example
 ```hcl-terraform
 # The namespace the project will reside in
 resource "kubernetes_namespace" "kergiva_namespace" {
