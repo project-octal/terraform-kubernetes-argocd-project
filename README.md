@@ -27,8 +27,9 @@ resource "kubernetes_namespace" "kergiva_namespace" {
 
 # Create the ArgoCD Project.
 module "project" {
-  source = "github.com/project-octal/terraform-argocd-project?ref=v1.0.1"
-
+  source  = "project-octal/argocd-project/kubernetes"
+  version = "1.0.4"
+  
   argocd_namespace = data.terraform_remote_state.infra.outputs.cluster_argocd_namespace
   name             = local.instance_name
   description      = local.project_description
