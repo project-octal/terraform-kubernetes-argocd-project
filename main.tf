@@ -1,4 +1,9 @@
 resource "kubernetes_manifest" "argo_project" {
+  computed_fields = [ 
+    "metadata.labels",
+    "metadata.annotations",
+    "metadata.finalizers"
+  ]
   manifest = {
     apiVersion = "argoproj.io/v1alpha1"
     kind       = "AppProject"
