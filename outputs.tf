@@ -1,3 +1,6 @@
 output "name" {
-  value = local.argo_project.metadata.name
+  depends_on = [
+    kubernetes_manifest.argo_project
+  ]
+  value = var.name
 }

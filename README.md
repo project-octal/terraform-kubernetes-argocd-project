@@ -12,10 +12,6 @@ The only hard requirement is a Kubernetes cluster with a functioning ArgoCD depl
 
 --- 
 
-### TODO:
-- Update the Terraform version to 1.0+
-- Deprecate the `k8s` provider in favor of the `kubernetes_manifest` resource in the `kubernetes` provider.
-
 ### Example
 ```hcl-terraform
 # The namespace the project will reside in
@@ -62,14 +58,13 @@ module "project" {
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
-| <a name="requirement_k8s"></a> [k8s](#requirement\_k8s) | >= 0.8.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14.8, < 2.0.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_k8s"></a> [k8s](#provider\_k8s) | >= 0.8.0 |
+| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | 2.6.1 |
 
 ## Modules
 
@@ -79,7 +74,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [k8s_manifest.argo_project](https://registry.terraform.io/providers/banzaicloud/k8s/latest/docs/resources/manifest) | resource |
+| [kubernetes_manifest.argo_project](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/manifest) | resource |
 
 ## Inputs
 
