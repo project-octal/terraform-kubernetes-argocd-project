@@ -1,5 +1,5 @@
 resource "kubernetes_manifest" "argo_project" {
-  computed_fields = [ 
+  computed_fields = [
     "metadata.labels",
     "metadata.annotations",
     "metadata.finalizers"
@@ -8,8 +8,8 @@ resource "kubernetes_manifest" "argo_project" {
     apiVersion = "argoproj.io/v1alpha1"
     kind       = "AppProject"
     metadata = {
-      name      = var.name
-      namespace = var.namespace
+      name       = var.name
+      namespace  = var.namespace
       finalizers = var.cascade_delete ? ["resources-finalizer.argocd.argoproj.io"] : []
     }
     spec = {
