@@ -15,7 +15,8 @@ variable "destinations" {
   description = "A list of server and namespaces that this project may deploy to."
   default = [{
     server    = "https://kubernetes.default.svc"
-    namespace = "default"
+    namespace = "*"
+    name      = "in-cluster"
   }]
 }
 variable "cascade_delete" {
@@ -31,17 +32,17 @@ variable "source_repos" {
 variable "cluster_resource_whitelist" {
   type        = list(object({ kind : string, group : string }))
   description = "A list of cluster-scoped resources the project is allowed to access"
-  default     = []
+  default     = null
 }
 variable "namespace_resource_whitelist" {
   type        = list(object({ kind : string, group : string }))
   description = "A list of namespace-scoped resources the project is allowed to access"
-  default     = []
+  default     = null
 }
 variable "namespace_resource_blacklist" {
   type        = list(object({ kind : string, group : string }))
   description = "A list of namespace-scoped resources the project is NOT allowed to access"
-  default     = []
+  default     = null
 }
 variable "permissions" {
   type = list(object({
